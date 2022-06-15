@@ -1,8 +1,10 @@
-import 'dart:html';
+//import 'dart:html'; 
 
 import 'package:calm_space/dashBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'oneTimeTest.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -125,36 +127,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget buildRememberCb() {
-    return Container(
-        height: 20,
-        child: Row(
-          children: <Widget>[
-            Theme(
-              data: ThemeData(unselectedWidgetColor: Colors.white),
-              child: Checkbox(
-                value: isRememberMe,
-                checkColor: Colors.green,
-                activeColor: Colors.white,
-                onChanged: (value) {
-                  setState(() {
-                    isRememberMe = value!;
-                  });
-                },
-              ),
-            ),
-            Text(
-              'Remember me',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ));
-  }
-
   Widget buildLoginBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(vertical: 10),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5,
@@ -170,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           'LOGIN',
           style: TextStyle(
-              color: Color(0x66bbaacc),
+              color: Color.fromARGB(255, 150, 111, 189),
               fontSize: 18,
               fontWeight: FontWeight.bold),
         ),
@@ -184,14 +159,19 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5,
-        onPressed: () {},
-        padding: EdgeInsets.all(15),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => OneTimeTest()),
+          );
+        },
+        padding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         color: Colors.white,
         child: Text(
           'Take a Test',
           style: TextStyle(
-              color: Color(0x66bbaacc),
+              color: Color.fromARGB(255, 150, 111, 189),
               fontSize: 18,
               fontWeight: FontWeight.bold),
         ),
@@ -234,35 +214,45 @@ class _LoginScreenState extends State<LoginScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                      Color(0x66bbaacc),
-                      Color(0x99bbaacc),
-                      Color(0xccbbaacc),
-                      Color(0xffbbaacc),
+                      Color.fromARGB(255, 174, 103, 245),
+                      Color.fromARGB(255, 144, 95, 194),
+                      Color.fromARGB(255, 164, 123, 204),
+                      Color.fromARGB(255, 201, 184, 218),
                     ])),
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 90),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Sign In',
+                        'Welcome!',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 50),
+                      SizedBox(height: 20),
+                      Text(
+                        'Ready to Log-in?',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
                       buildEmail(),
                       SizedBox(height: 20),
                       buildPassword(),
                       buildForgotPassBtn(),
-                      buildLoginBtn(),
                       SizedBox(
-                        height: 15,
+                        height: 20,
+                      ),
+                      buildLoginBtn(),
+                      buildSignUpBtn(),
+                      SizedBox(
+                        height: 20,
                       ),
                       buildOneTimeTestBtn(),
-                      buildSignUpBtn()
                     ],
                   ),
                 ),

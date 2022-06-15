@@ -1,8 +1,8 @@
-import 'dart:html';
-
+//import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
 
 class HealthTracker extends StatefulWidget {
   const HealthTracker({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class _HealthTrackerState extends State<HealthTracker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -34,6 +35,12 @@ class _HealthTrackerState extends State<HealthTracker> {
                       SizedBox(
                         height: 40,
                       ),
+                      Text(showCurrentDate(),
+                          style: TextStyle(
+                              color: Color.fromRGBO(164, 109, 168, 100),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30)),
+                      SizedBox(height: 30),
                       Text(
                         'Health Tracker',
                         style: TextStyle(
@@ -44,12 +51,6 @@ class _HealthTrackerState extends State<HealthTracker> {
                       SizedBox(
                         height: 40,
                       ),
-                      /*Text(DateFormat("MM \ndd").format(DateTime.now()),
-                          style: TextStyle(
-                              color: Color.fromRGBO(164, 109, 168, 100),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30)),
-                      SizedBox(height: 40),*/
                       // health tracker and habit tracker
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -286,4 +287,31 @@ class _HealthTrackerState extends State<HealthTracker> {
       ),
     );
   }
+}
+
+String showCurrentDate() {
+  String current_date = "";
+  String get_month = DateFormat("MM").format(DateTime.now());
+  String get_day = DateFormat("dd").format(DateTime.now());
+  String get_year = DateFormat("yyyy").format(DateTime.now());
+  print(get_day);
+  int month_index = int.parse(get_month);
+
+  List<String> months = [
+    "JANUARY",
+    "FEBURARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER"
+  ];
+  current_date += get_day + "th " + months[month_index - 1] + ", " + get_year;
+  print(current_date);
+  return current_date;
 }

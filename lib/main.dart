@@ -1,7 +1,10 @@
 import 'package:calm_space/dashBoard.dart';
 import 'package:calm_space/healthTracker.dart';
+import 'package:calm_space/oneTimeTest.dart';
+import 'package:calm_space/testQuestions.dart';
+import 'package:calm_space/welcomeScreen.dart';
 import 'package:flutter/material.dart';
-import './loginScreen.dart';
+import 'loginScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Login UI',
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
